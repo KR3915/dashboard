@@ -1,0 +1,18 @@
+import github as gh
+import instagram as ig
+import time
+
+def update_stats():
+    stars = gh.get_stars()
+    followers = gh.get_github_followers()
+    ig_followers = ig.get_ig_followers()
+    ig_following = ig.get_ig_following()
+    
+    from database import update_github_stats, update_instagram_stats
+    update_github_stats(stars, followers)
+    update_instagram_stats(ig_followers, ig_following)
+
+if __name__ == "__main__":
+    while True:
+        update_stats()
+        time.sleep(3600)  # Update every hour
