@@ -2,15 +2,17 @@ from flask import Flask
 import scripts.github as gh
 from flask import render_template
 import scripts.instagram as ig
+import scripts.get_stats as gs
+
 app = Flask(__name__)
 
 @app.route("/")
 def show_text():
            return render_template("dashboard/dashboard.html", 
-                                  github_stars=gh.get_stars(), 
-                                  github_followers=gh.get_github_followers(),
-                                  ig_followers=ig.get_ig_followers(),
-                                  ig_following=ig.get_ig_following())
+                                  github_stars=gs.get_latest_github_stats()[0], 
+                                  github_followers=gs.get_latest_github_stats()[1],
+                                  ig_followers=gs.get_latest_instagram_stats()[0],
+                                  ig_following=gs.get_latest_instagram_stats()[1])
 
 
 
