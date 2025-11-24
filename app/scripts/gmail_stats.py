@@ -26,25 +26,4 @@ def get_email1():
 
     return len(unread_msg_nums)
 
-def get_email2():
-    EMAIL_ACCOUNT = os.getenv("PROTON_EMAIL")
-    PASSWORD = os.getenv("PROTON_PASSWORD")
-    IMAP_SERVER = "127.0.0.1"
-    IMAP_PORT = 1143
-
-    date_since = (datetime.now() - timedelta(days=7)).strftime("%d-%b-%Y")
-
-    mail = imaplib.IMAP4_SSL(IMAP_SERVER, IMAP_PORT)
-    mail.login(EMAIL_ACCOUNT, PASSWORD)
-    mail.select("inbox")
-
-    # Search for unread emails from the last 7 days
-    status, response = mail.search(None, f'(UNSEEN SINCE {date_since})')
-    unread_msg_nums = response[0].split()
-
-    mail.logout()
-
-    return len(unread_msg_nums)
-
 print(get_email1())
-print(get_email2())
