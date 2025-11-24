@@ -1,6 +1,10 @@
 import sqlite3
+import os
 
-con = sqlite3.connect("../database/dashboard.db")
+# Get absolute path to database file
+DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", "dashboard.db")
+
+con = sqlite3.connect(DB_PATH)
 cur = con.cursor()
 def create_tables():
     cur.execute('''CREATE TABLE IF NOT EXISTS github_stats
@@ -11,7 +15,7 @@ def create_tables():
     con.close() 
 
 def update_github_stats(stars , followers):
-    con = sqlite3.connect("../database/dashboard.db")
+    con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     cur.execute("INSERT INTO github_stats (stars, followers) VALUES (?, ?)", 
                 (stars, followers))
@@ -19,9 +23,12 @@ def update_github_stats(stars , followers):
     con.close()
 
 def update_instagram_stats(followers, following):
-    con = sqlite3.connect("../database/dashboard.db")
+    con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     cur.execute("INSERT INTO instagram_stats (followers, following) VALUES (?, ?)", 
                 (followers, following))
     con.commit()
     con.close()
+
+if __name__ == "__main__":
+    create_tables()
