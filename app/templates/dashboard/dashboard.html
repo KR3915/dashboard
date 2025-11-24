@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>login</title>
+       <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+        <link rel="stylesheet" href="../../static/styles.css">
+    </head>
+   <body>
+        <!-- GitHub-->
+        <div class="profile">
+
+          <img src="{{ url_for('static', filename='assets/github.png') }}" class="github-logo">
+          <p class='profile-title1'>GitHub</p>
+          <p class='profile-title2'>KR3915</p>
+          <div class="stat">
+            <img src="{{url_for('static', filename='assets/star.png')}}" class="stat-icon">
+            <p class="stat-text"> Stars: {{github_stars}}</p>
+          </div>
+          <div class="stat">
+            <img src="{{url_for('static', filename='assets/follower.png')}}" class="stat-icon">
+            <p class="stat-text"> Followers: {{github_followers}}</p>
+          </div>
+        </div>
+        
+        <!-- Instagram -->
+
+              <div class="profile">
+              <div class="ig-profile">
+          <img src="{{ url_for('static', filename='assets/github.png') }}" class="github-logo">
+          <p class='profile-title1'>Instagram</p>
+          <p class='profile-title2'>fent_abuser</p>
+          <div class="stat">
+            <img src="{{url_for('static', filename='assets/star.png')}}" class="stat-icon">
+            <p class="stat-text"> Stars: {{ig_followers}}</p>
+          </div>
+          <div class="stat">
+            <img src="{{url_for('static', filename='assets/follower.png')}}" class="stat-icon">
+            <p class="stat-text"> Followers: {{ig_following}}</p>
+          </div>
+        </div>
+        </div>
+      </form>
+    </body>
