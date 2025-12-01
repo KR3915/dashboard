@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,11 @@
         <link rel="stylesheet" href="../../static/styles.css">
     </head>
    <body>
+    <div class="welcome-div">
+    <p class="welcome">{{welcome}}</p>
+    </div>
         <!-- GitHub-->
-        <div class="profile">
+        <div class="github-profile">
 
           <img src="{{ url_for('static', filename='assets/github.png') }}" class="github-logo">
           <p class='profile-title1'>GitHub</p>
@@ -23,10 +27,10 @@
             <p class="stat-text"> Followers: {{github_followers}}</p>
           </div>
         </div>
-        
+
         <!-- Instagram -->
 
-              <div class="profile">
+              <div class="instagram-profile">
               <div class="ig-profile">
           <img src="{{ url_for('static', filename='assets/instagram.png') }}" class="github-logo">
           <p class='profile-title1'>Instagram</p>
@@ -41,5 +45,24 @@
           </div>
         </div>
         </div>
+        
+              <div class="email-profile">
+              <div class="gmail">
+            <div class="notif">
+              <p class="notif-num">{{gmail_sent}}</p>
+            </div>
+          </div>
+            </div>
+          
+          <div class="weather-profile">
+          <div class="weather-title">
+            <img src="{{weather_icon}}">
+            <p class="weather-text">{{weather_description}}</p>
+          </div>
+            <div class="temperature">
+              <p>Teplota: {{temp}}°C</p>
+              <p>Pocitova: {{temp_feel}}°C</p>
+          </div>
+          
       </form>
     </body>

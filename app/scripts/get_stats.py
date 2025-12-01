@@ -33,3 +33,13 @@ def get_latest_gmail_stats():
     if result:
         return result[0]
     return 0
+
+def get_latest_protonmail_stats():
+    con = sqlite3.connect(DB_PATH)
+    cur = con.cursor()
+    cur.execute("SELECT emails_sent FROM protonmail_stats ORDER BY timestamp DESC LIMIT 1")
+    result = cur.fetchone()
+    con.close()
+    if result:
+        return result[0]
+    return 0

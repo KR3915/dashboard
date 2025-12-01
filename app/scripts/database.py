@@ -1,6 +1,10 @@
 import sqlite3
+import os
 
-con = sqlite3.connect("../database/dashboard.db")
+# Get the absolute path to the database file
+db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", "dashboard.db")
+
+con = sqlite3.connect(db_path)
 cur = con.cursor()
 
 
@@ -15,7 +19,7 @@ def create_tables():
     con.close() 
 
 def update_github_stats(stars , followers):
-    con = sqlite3.connect("../database/dashboard.db")
+    con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute("INSERT INTO github_stats (stars, followers) VALUES (?, ?)", 
                 (stars, followers))
@@ -23,7 +27,7 @@ def update_github_stats(stars , followers):
     con.close()
 
 def update_instagram_stats(followers, following):
-    con = sqlite3.connect("../database/dashboard.db")
+    con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute("INSERT INTO instagram_stats (followers, following) VALUES (?, ?)", 
                 (followers, following))
@@ -31,7 +35,7 @@ def update_instagram_stats(followers, following):
     con.close()
 
 def update_gmail_stats(emails_sent):
-    con = sqlite3.connect("../database/dashboard.db")
+    con = sqlite3.connect(db_path)
     cur = con.cursor()
     cur.execute("INSERT INTO gmail_stats (emails_sent) VALUES (?)",
                 (emails_sent,))
