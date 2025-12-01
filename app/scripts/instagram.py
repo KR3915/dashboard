@@ -6,6 +6,7 @@ def get_ig_followers(url='https://www.instagram.com/fent_abuser/'):
 
 def get_ig_following(url='https://www.instagram.com/fent_abuser/'):
     r = requests.get(url)
+    
     return get_follow_stats(r.text)[1]
 
 def get_follow_stats(html: str):
@@ -15,5 +16,8 @@ def get_follow_stats(html: str):
         followers = int(match.group(1))
         following = int(match.group(2))
         return followers, following
+    
     return None, None
+
+
 
